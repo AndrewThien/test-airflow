@@ -6,7 +6,7 @@ on:
       - "main"
 
 env:
-  app-name: test-airflow
+  app-name: test-airflow-scheduler
   repo-owner: ${{ github.repository_owner }}
   registry: ghcr.io
 
