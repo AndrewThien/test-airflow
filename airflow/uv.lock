@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.13'",
@@ -426,50 +427,6 @@ wheels = [
 ]
 
 [[package]]
-name = "azure-core"
-version = "1.32.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "requests" },
-    { name = "six" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cc/ee/668328306a9e963a5ad9f152cd98c7adad86c822729fd1d2a01613ad1e67/azure_core-1.32.0.tar.gz", hash = "sha256:22b3c35d6b2dae14990f6c1be2912bf23ffe50b220e708a28ab1bb92b1c730e5", size = 279128 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/39/83/325bf5e02504dbd8b4faa98197a44cdf8a325ef259b48326a2b6f17f8383/azure_core-1.32.0-py3-none-any.whl", hash = "sha256:eac191a0efb23bfa83fddf321b27b122b4ec847befa3091fa736a5c32c50d7b4", size = 198855 },
-]
-
-[[package]]
-name = "azure-storage-blob"
-version = "12.20.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "azure-core" },
-    { name = "cryptography" },
-    { name = "isodate" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/1b/0f/86cdaec4be486d12fd5bd2c56e835492a58d3bcd4915d24473e889b70f2c/azure-storage-blob-12.20.0.tar.gz", hash = "sha256:eeb91256e41d4b5b9bad6a87fd0a8ade07dd58aa52344e2c8d2746e27a017d3b", size = 551196 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/15/19/2be26569e708cb618feecd7316ee0c5475273f7cdb4f9030a862870c74c8/azure_storage_blob-12.20.0-py3-none-any.whl", hash = "sha256:de6b3bf3a90e9341a6bcb96a2ebe981dffff993e9045818f6549afea827a52a9", size = 392162 },
-]
-
-[[package]]
-name = "azure-storage-queue"
-version = "12.12.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "azure-core" },
-    { name = "cryptography" },
-    { name = "isodate" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/6c/b3/45bae4589fb9d1be0dc34db9422cb7c042a8290e015c59406cefdb22f93c/azure_storage_queue-12.12.0.tar.gz", hash = "sha256:baf2f1bc82b7d4f5291922c3ea4f23ce2243e942dbe7494fca1782290b37f1e4", size = 189869 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/39/62/a629654f0e455f2e4d3bec4be75bfeab0b027dc7ca72792961bac8d5bfac/azure_storage_queue-12.12.0-py3-none-any.whl", hash = "sha256:9305f724e0df6a93e3645bf075b5a7e3fc0a1eb1ee47c85912c7aff6b6fd490d", size = 182385 },
-]
-
-[[package]]
 name = "babel"
 version = "2.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -503,7 +460,6 @@ source = { virtual = "." }
 dependencies = [
     { name = "apache-airflow" },
     { name = "apache-airflow-providers-postgres" },
-    { name = "shared" },
     { name = "types-psycopg2" },
 ]
 
@@ -511,7 +467,6 @@ dependencies = [
 requires-dist = [
     { name = "apache-airflow", specifier = ">=2.10.5" },
     { name = "apache-airflow-providers-postgres", specifier = ">=6.1.1" },
-    { name = "shared", directory = "../shared" },
     { name = "types-psycopg2", specifier = ">=2.9.21.20250318" },
 ]
 
@@ -781,44 +736,6 @@ wheels = [
 ]
 
 [[package]]
-name = "django"
-version = "4.2.20"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "asgiref" },
-    { name = "sqlparse" },
-    { name = "tzdata", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0a/dd/33d2a11713f6b78493273a32d99bb449f2d93663ed4ec15a8b890d44ba04/Django-4.2.20.tar.gz", hash = "sha256:92bac5b4432a64532abb73b2ac27203f485e40225d2640a7fbef2b62b876e789", size = 10432686 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b3/5d/7571ba1c288ead056dda7adad46b25cbf64790576f095565282e996138b1/Django-4.2.20-py3-none-any.whl", hash = "sha256:213381b6e4405f5c8703fffc29cd719efdf189dec60c67c04f76272b3dc845b9", size = 7993584 },
-]
-
-[[package]]
-name = "django-filter"
-version = "24.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0a/74/b207c01184ac56a1f3b082ad235ab29b6d2f623c9cd84ae2846657f83389/django-filter-24.2.tar.gz", hash = "sha256:48e5fc1da3ccd6ca0d5f9bb550973518ce977a4edde9d2a8a154a7f4f0b9f96e", size = 142937 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7b/7d/ee51b0fd69425035a2efc101b2252cd08eab525c12db92fbea298823cc9f/django_filter-24.2-py3-none-any.whl", hash = "sha256:df2ee9857e18d38bed203c8745f62a803fa0f31688c9fe6f8e868120b1848e48", size = 94530 },
-]
-
-[[package]]
-name = "djangorestframework"
-version = "3.15.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/2c/ce/31482eb688bdb4e271027076199e1aa8d02507e530b6d272ab8b4481557c/djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad", size = 1067420 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7c/b6/fa99d8f05eff3a9310286ae84c4059b08c301ae4ab33ae32e46e8ef76491/djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20", size = 1071235 },
-]
-
-[[package]]
 name = "dnspython"
 version = "2.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -838,15 +755,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/48/ce/13508a1ec3f8bb981ae4ca79ea40384becc868bfae97fd1c942bb3a001b1/email_validator-2.2.0.tar.gz", hash = "sha256:cb690f344c617a714f22e66ae771445a1ceb46821152df8e165c5f9a364582b7", size = 48967 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d7/ee/bf0adb559ad3c786f12bcbc9296b3f5675f529199bef03e2df281fa1fadb/email_validator-2.2.0-py3-none-any.whl", hash = "sha256:561977c2d73ce3611850a06fa56b414621e0c8faa9d66f2611407d87465da631", size = 33521 },
-]
-
-[[package]]
-name = "et-xmlfile"
-version = "2.0.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d3/38/af70d7ab1ae9d4da450eeec1fa3918940a5fafb9055e934af8d6eb0c2313/et_xmlfile-2.0.0.tar.gz", hash = "sha256:dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54", size = 17234 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa", size = 18059 },
 ]
 
 [[package]]
@@ -1110,15 +1018,6 @@ wheels = [
 ]
 
 [[package]]
-name = "graphviz"
-version = "0.20.3"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fa/83/5a40d19b8347f017e417710907f824915fba411a9befd092e52746b63e9f/graphviz-0.20.3.zip", hash = "sha256:09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d", size = 256455 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/00/be/d59db2d1d52697c6adc9eacaf50e8965b6345cc143f671e1ed068818d5cf/graphviz-0.20.3-py3-none-any.whl", hash = "sha256:81f848f2904515d8cd359cc611faba817598d2feaac4027b266aa3eda7b3dde5", size = 47126 },
-]
-
-[[package]]
 name = "greenlet"
 version = "3.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1275,15 +1174,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e1/7e/691d061b7329bc8d54edbf0ec22fbfb2afe61facb681f9aaa9bff7a27d04/inflection-0.5.1.tar.gz", hash = "sha256:1a29730d366e996aaacffb2f1f1cb9593dc38e2ddd30c91250c6dde09ea9b417", size = 15091 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/59/91/aa6bde563e0085a02a435aa99b49ef75b0a4b062635e606dab23ce18d720/inflection-0.5.1-py2.py3-none-any.whl", hash = "sha256:f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2", size = 9454 },
-]
-
-[[package]]
-name = "isodate"
-version = "0.7.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/54/4d/e940025e2ce31a8ce1202635910747e5a87cc3a6a6bb2d00973375014749/isodate-0.7.2.tar.gz", hash = "sha256:4cd1aa0f43ca76f4a6c6c0292a85f40b35ec2e43e315b59f06e6d32171a953e6", size = 29705 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/15/aa/0aca39a37d3c7eb941ba736ede56d689e7be91cab5d9ca846bde3999eba6/isodate-0.7.2-py3-none-any.whl", hash = "sha256:28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15", size = 22320 },
 ]
 
 [[package]]
@@ -1620,18 +1510,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/3a/8e/c07a648a9d592fa9f3a19d1c7e1c7738ba95aff90db967a5a09cff1e1f37/multidict-6.2.0-cp313-cp313t-win32.whl", hash = "sha256:e653d36b1bf48fa78c7fcebb5fa679342e025121ace8c87ab05c1cefd33b34fc", size = 28950 },
     { url = "https://files.pythonhosted.org/packages/dc/a9/bebb5485b94d7c09831638a4df9a1a924c32431a750723f0bf39cd16a787/multidict-6.2.0-cp313-cp313t-win_amd64.whl", hash = "sha256:ca23db5fb195b5ef4fd1f77ce26cadefdf13dba71dab14dadd29b34d457d7c44", size = 32001 },
     { url = "https://files.pythonhosted.org/packages/9c/fd/b247aec6add5601956d440488b7f23151d8343747e82c038af37b28d6098/multidict-6.2.0-py3-none-any.whl", hash = "sha256:5d26547423e5e71dcc562c4acdc134b900640a39abd9066d7326a7cc2324c530", size = 10266 },
-]
-
-[[package]]
-name = "openpyxl"
-version = "3.1.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "et-xmlfile" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/3b/745ab106476cc3ff6c82a053f1560422966e0a6a6eaee2d4b706daa26428/openpyxl-3.1.3.tar.gz", hash = "sha256:8dd482e5350125b2388070bb2477927be2e8ebc27df61178709bc8c8751da2f9", size = 188705 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/d9/796181a30827b12101786c21301f0f4536597a9249530916b1fdb5bbad91/openpyxl-3.1.3-py2.py3-none-any.whl", hash = "sha256:25071b558db709de9e8782c3d3e058af3b23ffb2fc6f40c8f0c45a154eced2c3", size = 251340 },
 ]
 
 [[package]]
@@ -2025,15 +1903,6 @@ wheels = [
 ]
 
 [[package]]
-name = "python-dotenv"
-version = "1.0.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca", size = 39115 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/6a/3e/b68c118422ec867fa7ab88444e1274aa40681c606d59ac27de5a5588f082/python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a", size = 19863 },
-]
-
-[[package]]
 name = "python-nvd3"
 version = "0.16.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2279,35 +2148,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/1a/71/0c1e151ef6899260da4009e7170f56261486d3149e9bad40990b52bdd620/setproctitle-1.3.5-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:8a7fed67ab49f60bd51f3b4cffff3f8d754d1bb0a40e42869911301ec6519b65", size = 30944 },
     { url = "https://files.pythonhosted.org/packages/38/34/a3bdaeaee03e11aef82b45014738f1210f90e37359c41eda3e49b4ce891c/setproctitle-1.3.5-cp313-cp313-win32.whl", hash = "sha256:e9c0d0cfcf715631b10d5950d04a9978f63bc46535724ef7c2eaf1dca9988642", size = 11463 },
     { url = "https://files.pythonhosted.org/packages/ef/f1/a19cde9f3f4054aed7c6077e7fc3420a5151ec6173cf3235fe000722ccb8/setproctitle-1.3.5-cp313-cp313-win_amd64.whl", hash = "sha256:e1d28eb98c91fbebd3e443a45c7da5d84974959851ef304c330eabd654a386f1", size = 12182 },
-]
-
-[[package]]
-name = "shared"
-version = "0.3.2"
-source = { directory = "../shared" }
-dependencies = [
-    { name = "azure-storage-blob" },
-    { name = "azure-storage-queue" },
-    { name = "django" },
-    { name = "django-filter" },
-    { name = "djangorestframework" },
-    { name = "graphviz" },
-    { name = "openpyxl" },
-    { name = "psycopg2-binary" },
-    { name = "python-dotenv" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "azure-storage-blob", specifier = "==12.20.0" },
-    { name = "azure-storage-queue", specifier = ">=12.9.0,<13.0.0" },
-    { name = "django", specifier = ">=4.2.0,<4.3.0" },
-    { name = "django-filter", specifier = "==24.2" },
-    { name = "djangorestframework", specifier = "==3.15.2" },
-    { name = "graphviz", specifier = ">=0.20.3,<0.21.0" },
-    { name = "openpyxl", specifier = "==3.1.3" },
-    { name = "psycopg2-binary", specifier = ">=2.9.9,<3.0.0" },
-    { name = "python-dotenv", specifier = ">=1.0.1,<2.0.0" },
 ]
 
 [[package]]

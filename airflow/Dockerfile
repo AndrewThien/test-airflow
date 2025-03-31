@@ -13,6 +13,13 @@ COPY ./dags /opt/airflow/dags
 # Set ownership of copied files
 USER root
 RUN chown -R airflow:root /opt/airflow/dags
+
+# Create entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 USER airflow
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 
