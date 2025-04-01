@@ -17,6 +17,12 @@ RUN chown -R airflow:root /opt/airflow/dags
 COPY entrypoint-webserver.sh /entrypoint-webserver.sh
 RUN chmod +x /entrypoint-webserver.sh
 
+# Verify Airflow is properly installed
+RUN echo "========== VERIFYING AIRFLOW INSTALLATION =========="
+RUN which airflow
+RUN airflow version
+RUN echo "===================================================="
+
 USER airflow
 
 ENTRYPOINT ["/entrypoint-webserver.sh"]

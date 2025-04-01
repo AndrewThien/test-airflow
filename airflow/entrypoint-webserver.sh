@@ -1,44 +1,19 @@
 #!/bin/bash
 set -e
 
-# Print current user and environment for debugging
+# Print current environment for debugging
 echo "Current user: $(whoami)"
 echo "Home directory: $HOME"
 echo "Current directory: $(pwd)"
-echo "PATH before: $PATH"
-
-# Try to find airflow executable
-find / -name airflow 2>/dev/null || echo "Airflow executable not found in filesystem"
-
-# Add possible locations to PATH
-export PATH="/opt/airflow/bin:/usr/local/airflow/bin:/home/airflow/.local/bin:$PATH"
-echo "PATH after: $PATH"
-
-# Check if Airflow CLI is available
-if ! command -v airflow &> /dev/null; then
-    echo "Error: Airflow command not found"
-    
-    # Try installing airflow if not available
-    echo "Attempting to install/repair Airflow..."
-    pip install "apache-airflow==2.10.5"
-    
-    # Check again
-    if ! command -v airflow &> /dev/null; then
-        echo "Failed to find or install Airflow. Exiting."
-        exit 1
-    fi
-fi
-
-# Optional: Verify Airflow version
-echo "Airflow version: $(airflow version)"
+echo "PATH: $PATH"
+echo "Airflow version: $(airflow version || echo 'COMMAND FAILED')"
 
 # Wait for the database to be ready
-airflow db check
+airflow db check || { echo "Database check failed"; exit 1; }
 
-# Upgrade the database (safer than init for production)
-
-airflow db init
-airflow db migrate
+# Initialize/upgrade the database
+airflow db init || { echo "Database init failed"; exit 1; }
+airflow db migrate || { echo "Database migrate failed"; exit 1; }
 
 # Create admin user
 airflow users create \
