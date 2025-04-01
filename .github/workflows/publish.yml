@@ -6,7 +6,7 @@ on:
       - "main"
 
 env:
-  app-name: test-airflow-scheduler
+  app-name: airflow
   repo-owner: ${{ github.repository_owner }}
   registry: ghcr.io
 
@@ -35,12 +35,12 @@ jobs:
       - name: Set timestamp env var
         run: echo "RUN_TIMESTAMP=$(TZ="Etc/UTC" date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
 
-      # Tag and for backend
+      # Tag and for webserver
       - name: Extract backend Docker metadata
         id: backend_meta
         uses: docker/metadata-action@v5.5.1
         with:
-          images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.app-name }}/airflow
+          images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.app-name }}/webserver
           tags: |
             ${{ github.event.release.tag_name }}
             ${{ github.sha }}
@@ -51,7 +51,28 @@ jobs:
         uses: docker/build-push-action@v5.3.0
         with:
           context: ./airflow
-          file: ./airflow/Dockerfile
+          file: ./airflow/Dockerfile.webserver
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.backend_meta.outputs.tags }}
+
+      # Tag and for scheduler
+      - name: Extract backend Docker metadata
+        id: backend_meta
+        uses: docker/metadata-action@v5.5.1
+        with:
+          images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.app-name }}/scheduler
+          tags: |
+            ${{ github.event.release.tag_name }}
+            ${{ github.sha }}
+            ${{ env.RUN_TIMESTAMP }}
+            "latest"
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v5.3.0
+        with:
+          context: ./airflow
+          file: ./airflow/Dockerfile.scheduler
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.backend_meta.outputs.tags }}

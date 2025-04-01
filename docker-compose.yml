@@ -4,7 +4,7 @@ services:
   scheduler:
     build:
       context: airflow
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.scheduler
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       # Update this connection string to point to your remote PostgreSQL
@@ -16,4 +16,3 @@ services:
       AIRFLOW_CONN_MINIO_CONN: aws://minioadmin:minioadmin@/?endpoint_url=http://minio:9000
       AIRFLOW_CONN_WASB__CONN: wasb://DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;QueueEndpoint=http://azurite:10001/devstoreaccount1;TableEndpoint=http://azurite:10002/devstoreaccount1;
       # TODO: enable CORS on production
-    command: airflow scheduler

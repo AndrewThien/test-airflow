@@ -15,11 +15,11 @@ USER root
 RUN chown -R airflow:root /opt/airflow/dags
 
 # Create entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY entrypoint-scheduler.sh /entrypoint-scheduler.sh
+RUN chmod +x /entrypoint-scheduler.sh
 
 USER airflow
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint-scheduler.sh"]
 
 
