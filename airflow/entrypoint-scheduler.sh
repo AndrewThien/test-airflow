@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
 
-# Ensure airflow command is in PATH
-export PATH="/home/airflow/.local/bin:$PATH"
+# Wait for the database to be ready
+airflow db check
+
+# Initialize/upgrade the database
+airflow db init
+airflow db migrate
 
 # Start the scheduler
 exec airflow scheduler

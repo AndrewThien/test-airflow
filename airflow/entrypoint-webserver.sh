@@ -1,10 +1,13 @@
 #!/bin/bash
 set -e
 
-# Ensure airflow command is in PATH
-export PATH="/home/airflow/.local/bin:$PATH"
-# Initialize the database
+# Wait for the database to be ready
+airflow db check
+
+# Upgrade the database (safer than init for production)
+
 airflow db init
+airflow db migrate
 
 # Create admin user
 airflow users create \
