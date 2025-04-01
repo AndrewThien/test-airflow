@@ -9,19 +9,15 @@ RUN pip install --no-cache-dir \
 # Copy DAGs to the container
 COPY ./dags /opt/airflow/dags
 
-# Set ownership of copied files
+# Set ownership and permissions for directories
 USER root
-RUN chown -R airflow:root /opt/airflow/dags
+RUN mkdir -p /opt/airflow/logs /opt/airflow/config
+RUN chown -R airflow:root /opt/airflow/dags /opt/airflow/logs /opt/airflow/config
+RUN chmod -R 775 /opt/airflow/logs /opt/airflow/dags /opt/airflow/config
 
 # Create entrypoint script
 COPY entrypoint-webserver.sh /entrypoint-webserver.sh
 RUN chmod +x /entrypoint-webserver.sh
-
-# Verify Airflow is properly installed
-RUN echo "========== VERIFYING AIRFLOW INSTALLATION =========="
-RUN which airflow
-RUN airflow version
-RUN echo "===================================================="
 
 USER airflow
 
