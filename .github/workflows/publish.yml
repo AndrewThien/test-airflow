@@ -37,7 +37,7 @@ jobs:
 
       # Tag and for webserver
       - name: Extract backend Docker metadata
-        id: backend_meta
+        id: backend_meta_webserver
         uses: docker/metadata-action@v5.5.1
         with:
           images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.app-name }}/webserver
@@ -54,11 +54,11 @@ jobs:
           file: ./airflow/Dockerfile.webserver
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.backend_meta.outputs.tags }}
+          tags: ${{ steps.backend_meta_webserver.outputs.tags }}
 
       # Tag and for scheduler
       - name: Extract backend Docker metadata
-        id: backend_meta
+        id: backend_meta_scheduler
         uses: docker/metadata-action@v5.5.1
         with:
           images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.app-name }}/scheduler
@@ -75,4 +75,4 @@ jobs:
           file: ./airflow/Dockerfile.scheduler
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.backend_meta.outputs.tags }}
+          tags: ${{ steps.backend_meta_scheduler.outputs.tags }}
